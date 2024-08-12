@@ -3,6 +3,7 @@ import axios from 'axios';
 import Flashcard from './Flashcard';
 import { Link } from 'react-router-dom';
 import Header from './Header';
+const backend_url = process.env.backend_url
 
 const FlashcardViewer = () => {
     const [flashcards, setFlashcards] = useState([]);
@@ -12,7 +13,7 @@ const FlashcardViewer = () => {
 
     useEffect(() => {
         // Fetch flashcards from the backend
-        axios.get('http://localhost:8000/flashcards')
+        axios.get(`${backend_url}/flashcards`)
             .then(response => setFlashcards(response.data))
             .catch(error => console.error('Error fetching flashcards:', error));
     }, []);
