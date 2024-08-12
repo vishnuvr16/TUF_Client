@@ -27,7 +27,7 @@ const AdminDashboard = () => {
                 .catch(error => console.error('Error updating flashcard:', error));
         } else {
             // Add flashcard to the database
-            axios.post(`$[backend_url}/flashcards`, form)
+            axios.post(`${backend_url}/flashcards`, form)
                 .then(response => setFlashcards([...flashcards, response.data]))
                 .catch(error => console.error('Error adding flashcard:', error));
         }
