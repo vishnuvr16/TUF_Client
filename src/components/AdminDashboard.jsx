@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from './Header';
-const backend_url = process.env.backend_url
+const backend_url = "https://tuf-api.onrender.com"
 
 const AdminDashboard = () => {
     const [flashcards, setFlashcards] = useState([]);

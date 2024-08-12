@@ -3,7 +3,7 @@ import axios from 'axios';
 import Flashcard from './Flashcard';
 import { Link } from 'react-router-dom';
 import Header from './Header';
-const backend_url = process.env.backend_url
+const backend_url = "https://tuf-api.onrender.com"
 
 const FlashcardViewer = () => {
     const [flashcards, setFlashcards] = useState([]);
