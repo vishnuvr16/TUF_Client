@@ -10,7 +10,7 @@ const AdminDashboard = () => {
 
     useEffect(() => {
         // Fetch flashcards from the backend
-        axios.get(`${backend_url}/flashcards`)
+        axios.get('https://tuf-api.onrender.com/flashcards')
             .then(response => setFlashcards(response.data))
             .catch(error => console.error('Error fetching flashcards:', error));
     }, []);
