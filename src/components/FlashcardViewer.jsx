@@ -10,12 +10,15 @@ const FlashcardViewer = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [flipped, setFlipped] = useState(false); // Track if the card is flipped
     const isNavigatingRef = useRef(false); // Ref to track navigation state
+    const [loading,setLoading] = useState(false); //Track the status
 
     useEffect(() => {
+        setLoading(true);
         // Fetch flashcards from the backend
         axios.get(`${backend_url}/flashcards`)
             .then(response => setFlashcards(response.data))
             .catch(error => console.error('Error fetching flashcards:', error));
+        setLoading(false);
     }, []);
 
     const handleNext = () => {
@@ -43,8 +46,8 @@ const FlashcardViewer = () => {
 
     return (
         <div style={styles.container}>
-            {/* <Header />/ */}
-            <Flashcard 
+            { loading ? ("Loading...") :
+            (<Flashcard 
                 flashcard={flashcards[currentIndex]} 
                 flipped={flipped} 
                 setFlipped={setFlipped} 
@@ -52,8 +55,8 @@ const FlashcardViewer = () => {
             <div style={styles.controls}>
                 <button onClick={handlePrevious} style={styles.button}>Previous</button>
                 <button onClick={handleNext} style={styles.button}>Next</button>
-            </div>
-
+            </div>)
+        }
         </div>
     );
 };
